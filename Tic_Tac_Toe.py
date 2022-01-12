@@ -6,10 +6,13 @@ Author: Miguel López.
 
 # Functions.
 def main():
+    # Starts the game.
+    player = next_player( "" )
+
     # Create board.
     board = create_board()
 
-    print ( board )
+    print( player )
 
 def create_board():
     """Create a list called board.
@@ -33,6 +36,27 @@ def display_board(board):
     print('-+-+-')
     print(f"{board[6]}|{board[7]}|{board[8]}")
     print()
+
+def next_player(current):
+    """Determine which one is the next player.
+    Parameters
+        current: The current player in the turn.
+    Return: The next player, should be "x" or "o".
+    """
+    if current == "" or current == "o":
+        return "x"
+    elif current == "x":
+        return "o"
+
+def make_move(player, board):
+    """Make a move for a player.
+    Parameters
+        player: The current player to make the move.
+        board: The board were the move is going to be done.
+    Return: Nothing.
+    """
+    square = int(input(f"{player}'s turn to choose a square (1-9): "))
+    board[square - 1] = player
 
 if __name__ == "__main__":
     main()
