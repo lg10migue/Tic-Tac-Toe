@@ -6,7 +6,7 @@ Author: Miguel López.
 
 # Functions.
 def main():
-    # Starts the game.
+    # Start the game.
     player = next_player( "" )
 
     # Create board.
@@ -20,7 +20,11 @@ def main():
     display_board( board )
 
     # The end of the game.
-    print("Good game. Thanks for playing!")
+    if has_winner( board ):
+        player = next_player( player )
+        print( f"Good game player {player}, YOU WIN! Thanks for playing!" )
+    elif is_draw( board ):
+        print( f"DRAW! Nice game! Thanks for playing!" )
 
 def create_board():
     """Create a list called board.
@@ -37,13 +41,11 @@ def display_board( board ):
         Board: The board to be displayed.
     Return: Nothing.
     """
-    print()
-    print(f"{board[0]}|{board[1]}|{board[2]}")
-    print('-+-+-')
-    print(f"{board[3]}|{board[4]}|{board[5]}")
-    print('-+-+-')
-    print(f"{board[6]}|{board[7]}|{board[8]}")
-    print()
+    print( f"\n{board[0]}|{board[1]}|{board[2]}" )
+    print( "-+-+-" )
+    print( f"{board[3]}|{board[4]}|{board[5]}" )
+    print( "-+-+-" )
+    print( f"{board[6]}|{board[7]}|{board[8]}\n" )
 
 def next_player( current ):
     """Determine which one is the next player.
@@ -63,7 +65,7 @@ def make_move( player, board ):
         board: The board were the move is going to be done.
     Return: Nothing.
     """
-    square = int( input( f"{player}'s turn to choose a square (1-9): " ) )
+    square = int( input( f"{player}'s turn to make a move (1-9): " ) )
     board[square - 1] = player
 
 def is_draw( board ):
