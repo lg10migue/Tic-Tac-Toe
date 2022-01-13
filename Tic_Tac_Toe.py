@@ -3,6 +3,16 @@ Tic-Tac-Toe.
 Script for the Prove: Developer activity of week two.
 Author: Miguel López.
 """
+# Global variables
+
+# Color for each player.
+CE = '\33[0m' # Default
+CB = '\33[34m' # Blue
+CY = '\33[33m' # Yellow
+
+# Players with colors.
+x = f"{CB}x{CE}"
+o = f"{CY}o{CE}"
 
 # Functions.
 def main():
@@ -32,7 +42,7 @@ def create_board():
     """
     board = []
     for square in range(9):
-        board.append(square + 1)
+        board.append( square + 1 )
     return board
 
 def display_board( board ):
@@ -53,10 +63,11 @@ def next_player( current ):
         current: The current player in the turn.
     Return: The next player, should be "x" or "o".
     """
-    if current == "" or current == "o":
-        return "x"
-    elif current == "x":
-        return "o"
+    # Condition to determine the player.
+    if current == "" or current == o:
+        return x
+    elif current == x:
+        return o
 
 def make_move( player, board ):
     """Make a move for a player.
@@ -75,7 +86,7 @@ def is_draw( board ):
     Return: True if the game is in draw or False if not.
     """
     for square in range( 9 ):
-        if board[square] != "x" and board[square] != "o":
+        if board[square] != x and board[square] != o:
             return False
     return True 
     
